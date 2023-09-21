@@ -43,19 +43,21 @@ import androidx.compose.ui.unit.sp
 import com.example.words.R
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.words.navigation.Screens
 
-
-
-
 @Composable
-fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
+fun GameScreen(navController: NavController,gameViewModel: GameViewModel = viewModel()) {
     val gameUiState by gameViewModel.uiState.collectAsState()
    val mediumPadding = dimensionResource(R.dimen.padding_medium)
+
+    //
+
+
+    //
 
     Column(
         modifier = Modifier
@@ -91,22 +93,18 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
                 )
             }
 
-      /**      //внизу код кнопка  для перехода на другой экран
-            Row (modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp),
-                horizontalArrangement = Arrangement.Center)
-            {
+            //внизу код кнопка  для перехода на другой экран
+
             Button(
                 shape = MaterialTheme.shapes.medium,
                 colors = ButtonDefaults.run {
                     val buttonColors: ButtonColors =
-                        buttonColors(Color.Black)
+                        buttonColors(Color.Blue)
                     buttonColors },
                 modifier = Modifier.padding(1.dp),
                 onClick = {
                     //TODO: Navigate to Details
-                    navController.navigate(Screens.Two.route)
+                   navController.navigate ( Screens.Two.route)
                 })
 
             {
@@ -118,9 +116,9 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
                         color = Color.White
                     )
                 )
-            }}
+            }
             //вверху код кнопка для перехода на другой экран с подсказками
-*/
+
         }
         GameLayout(
             onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
@@ -203,7 +201,6 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
         }
     }
 }
-
 
 
 @Composable

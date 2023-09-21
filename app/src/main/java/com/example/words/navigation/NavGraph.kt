@@ -17,9 +17,9 @@ fun NavGraph(navController: NavHostController ){
         navController = navController,
         startDestination = Screens.One.route)
     {
-     //   composable(route = Screens.Game.route){
-     //       GameScreen(navController)
-      //  }
+        composable(route = Screens.Game.route){
+            GameScreen(navController)
+       }
 
         composable(route = Screens.Two.route){
             TwoScreen(navController)
